@@ -41,6 +41,7 @@ export function Takebooks({ takebooks }) {
       <div className="row ">
         <div className="heading text-white p-1 mt-3 mb-3  ">
           <h1 className="text-center mt-3 ">Return Books library</h1>
+          <img src="https://www.unitedparishbrookline.org/sites/default/files/library%20books.jpg" class="img-fluid" alt="..."/>
         </div>
 
         {bookdata.length > 0 ? (
