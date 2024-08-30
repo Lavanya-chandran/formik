@@ -1,6 +1,25 @@
-.container{
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  background-color: blueviolet;
+.card{
+  background: rgb(254, 254, 254);
+
+}
+
+.heading{
+background:rgb(116, 113, 113);
+
+}
+
+.text-light{
+position: relative;
+top: 31px;
+
+
+}
+
+body{
+  background-image: url("./assets/pexels-pixabay-159711.jpg");
+  
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
 }

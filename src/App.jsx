@@ -1,20 +1,43 @@
-import { Routes,Route } from 'react-router-dom';
-import './App.css';
-import Home from './pages/Home';
-import Edit from './pages/Edit';
-import Add from './pages/Add';
+import { useEffect, useState } from "react";
+import "./App.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { AddBooks } from "./AddBooks.jsx";
+import { Books } from "./Books";
+import { EditBook } from "./EditBook.jsx";
+import { Takebooks } from "./Takebooks.jsx";
+import { Navbar } from "./Navbar.jsx";
+import Footer from "./Footer";
+import Home from "./Home";
 import "bootstrap/dist/css/bootstrap.min.css"
-
 function App() {
+  const navigate = useNavigate();
+  const [takebooks, settakebooks] = useState([]);
+
+  console.log("takebooks", takebooks);
+  const returndeletfun = async (dataid) => {
+    // const api =`https://63e0923b65b57fe60644f2ba.mockapi.io/books/${dataid}`
+
+    await fetch(`https://freetestapi.com/api/v1/books '${dataid}`, {
+      method: "DELETE",
+    });
+    navigate(`/books/take`);
+  };
+
   return (
-    <div className="container">
-      <div className='center'>
+    <div className="App">
+      <Navbar />
       <Routes>
-        <Route path='/' Component={Home}></Route>
-        <Route path='/Edit/:id' Component={Edit}></Route>
-        <Route path='/add' Component={Add}></Route>
+        <Route path="/" element={<Home/>} />
+        <Route path="/books" element={<Books />} />
+        <Route path="/addbooks" element={<AddBooks />} />
+        <Route path="/books/edit/:id" element={<EditBook />} />
+        <Route
+          path="/books/take"
+          element={<Takebooks takebooks={takebooks} />}
+        />
+        <Route path="*" element={<Books />} />
       </Routes>
-    </div>
+      <Footer />
     </div>
   );
 }
